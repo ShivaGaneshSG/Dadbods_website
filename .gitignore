@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# IDEs & System
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary & Binaries
+cloudflared.exe
+*.exe
+cloudflared*.log
+*.tmp
+*.temp
+
+# Root-level image processing scratch files
+/*.png
+
+# Preserve project image assets
+!images/
+!images/**
+
+# Editor & Tooling caches
+.gemini/
+.agents/

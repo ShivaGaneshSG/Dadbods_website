@@ -1,0 +1,55 @@
+<header class="site-nav">
+  <div class="container nav-inner">
+    <!-- Brand SVG Logo -->
+    <a href="{% url 'core:home' %}" class="nav-brand" aria-label="DadBods Home">
+      <img src="{{ dadbods_images.logo }}" class="nav-logo-svg" alt="DadBods Logo">
+    </a>
+
+    <!-- Exactly 4 Primary Navigation Items (3 Links + Primary CTA) -->
+    <ul class="nav-menu">
+      <li>
+        <a href="{% url 'core:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">HOME</a>
+      </li>
+      <li>
+        <a href="{% url 'core:transformations' %}" class="nav-link {% if request.resolver_match.url_name == 'transformations' %}active{% endif %}">TRANSFORMATIONS</a>
+      </li>
+      <li>
+        <a href="{% url 'core:about' %}" class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">ABOUT</a>
+      </li>
+    </ul>
+
+    <!-- Primary CTA & Mobile Toggle -->
+    <div class="nav-actions">
+      <a href="{% url 'applications:apply' %}" class="btn btn-nav-cta btn-sm">
+        GET TRAINED BY DADBODS
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Minimal Mobile Drawer -->
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav-drawer" id="mobileDrawer">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <a href="{% url 'core:home' %}">
+      <img src="{{ dadbods_images.logo }}" style="height:32px; filter:brightness(0) invert(1);" alt="DadBods">
+    </a>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="{% url 'core:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">HOME</a></li>
+    <li><a href="{% url 'core:transformations' %}" class="nav-link {% if request.resolver_match.url_name == 'transformations' %}active{% endif %}">TRANSFORMATIONS</a></li>
+    <li><a href="{% url 'core:about' %}" class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">ABOUT</a></li>
+  </ul>
+  <div style="margin-top:auto; padding-top:2rem; border-top:1px solid var(--charcoal-gray);">
+    <a href="{% url 'applications:apply' %}" class="btn btn-primary btn-full">
+      GET TRAINED BY DADBODS
+    </a>
+  </div>
+</div>

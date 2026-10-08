@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}ABOUT | DADBODS{% endblock %}
+
+{% block content %}
+<!-- ========================================================================
+     1. ABOUT HERO
+     ======================================================================== -->
+<section class="page-section-hero">
+  <div class="container">
+    <div class="section-label reveal-on-scroll">THE PEOPLE BEHIND DADBODS</div>
+    <h1 class="page-hero-title reveal-on-scroll" data-delay="100">ATHISH &bull; KARAN &bull; SHRI</h1>
+    <p class="page-hero-sub reveal-on-scroll" data-delay="200">
+      Built on progressive overload, practical nutrition, and genuine accountability.
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================================
+     2. ATHISH / KARAN / SHRI (VISUAL PRESENTATION — NAMES ONLY)
+     ======================================================================== -->
+<section class="section-about-story-roster">
+  <div class="container">
+    <div class="about-names-gallery">
+      <!-- ATHISH -->
+      <div class="about-name-card reveal-on-scroll" data-delay="100">
+        <div class="about-card-image-box">
+          <img 
+            src="{{ dadbods_images.coaches.athish.profile_image }}" 
+            alt="Athish"
+            loading="lazy"
+            onerror="this.src='{{ dadbods_images.placeholders.avatar }}'"
+          >
+          <div class="about-card-overlay"></div>
+        </div>
+        <div class="about-card-name-wrap">
+          <h2 class="about-visual-name">ATHISH</h2>
+        </div>
+      </div>
+
+      <!-- KARAN -->
+      <div class="about-name-card featured-about-card reveal-on-scroll" data-delay="250">
+        <div class="about-card-image-box">
+          <img 
+            src="{{ dadbods_images.coaches.karan.profile_image }}" 
+            alt="Karan"
+            loading="lazy"
+            onerror="this.src='{{ dadbods_images.placeholders.avatar }}'"
+          >
+          <div class="about-card-overlay"></div>
+        </div>
+        <div class="about-card-name-wrap">
+          <h2 class="about-visual-name">KARAN</h2>
+        </div>
+      </div>
+
+      <!-- SHRI -->
+      <div class="about-name-card reveal-on-scroll" data-delay="400">
+        <div class="about-card-image-box">
+          <img 
+            src="{{ dadbods_images.coaches.shri.profile_image }}" 
+            alt="Shri"
+            loading="lazy"
+            onerror="this.src='{{ dadbods_images.placeholders.avatar }}'"
+          >
+          <div class="about-card-overlay"></div>
+        </div>
+        <div class="about-card-name-wrap">
+          <h2 class="about-visual-name">SHRI</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     3. OUR PHILOSOPHY — LARGE TYPOGRAPHIC STATEMENT
+     ======================================================================== -->
+<section class="section-about-philosophy">
+  <div class="container philosophy-inner">
+    <div class="section-label reveal-on-scroll">OUR APPROACH</div>
+    <h2 class="philosophy-title reveal-on-scroll">OUR PHILOSOPHY</h2>
+
+    <div class="philosophy-triad">
+      <div class="philosophy-triad-item reveal-on-scroll" data-delay="100">
+        <span class="triad-num">01</span>
+        <h3 class="triad-heading">TRAIN WITH PURPOSE.</h3>
+        <p class="triad-text">Every movement in your program has a precise objective. No wasted junk volume, no random exercises.</p>
+      </div>
+
+      <div class="philosophy-triad-item reveal-on-scroll" data-delay="250">
+        <span class="triad-num">02</span>
+        <h3 class="triad-heading">EAT WITH INTENTION.</h3>
+        <p class="triad-text">Sustainable nutrition calibrated to South Indian diets and realistic social schedules. Long-term adherence beats short-term perfection.</p>
+      </div>
+
+      <div class="philosophy-triad-item reveal-on-scroll" data-delay="400">
+        <span class="triad-num">03</span>
+        <h3 class="triad-heading">STAY CONSISTENT.</h3>
+        <p class="triad-text">Direct coach check-ins ensure momentum is never lost. When work or life gets busy, we adapt your plan so you never stop progressing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     4. BRAND STATEMENT & FINAL CALL
+     ======================================================================== -->
+<section class="section-brand-statement">
+  <div class="container">
+    <div class="statement-brand-box reveal-on-scroll">
+      <div class="statement-brand-logo">
+        <img src="{{ dadbods_images.logo }}" alt="DadBods">
+      </div>
+      <h2 class="statement-hero-slogan">
+        RIGHT TIME.<br>
+        RIGHT NOW.
+      </h2>
+      <p class="statement-hero-text">
+        Real transformation begins the moment you decide to stop waiting. Our coaches are ready to build your roadmap.
+      </p>
+      <div style="margin-top: 2.5rem;">
+        <a href="{% url 'applications:apply' %}" class="btn btn-primary btn-lg btn-glow">
+          GET TRAINED BY DADBODS
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

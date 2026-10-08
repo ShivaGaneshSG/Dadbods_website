@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}COACHING | DADBODS{% endblock %}
+
+{% block content %}
+<section style="padding: 8rem 0 7rem 0; background-color: var(--near-black);">
+  <div class="container" style="max-width: 860px;">
+    <div style="margin-bottom: 4rem;">
+      <div class="section-label">COACHING</div>
+      <h1 style="font-size: clamp(2.4rem, 6vw, 4.5rem);">COACHING THAT FITS YOUR LIFE.</h1>
+    </div>
+
+    <!-- 4 Minimal Items -->
+    <div style="display: flex; flex-direction: column; gap: 3rem; margin-bottom: 5rem;">
+      <div style="border-top: 1px solid var(--charcoal-gray); padding-top: 1.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">TRAINING</h2>
+        <p style="font-size: 1.05rem; color: var(--light-gray);">Personalised training based on your goal.</p>
+      </div>
+
+      <div style="border-top: 1px solid var(--charcoal-gray); padding-top: 1.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">NUTRITION</h2>
+        <p style="font-size: 1.05rem; color: var(--light-gray);">A practical approach you can maintain.</p>
+      </div>
+
+      <div style="border-top: 1px solid var(--charcoal-gray); padding-top: 1.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">ACCOUNTABILITY</h2>
+        <p style="font-size: 1.05rem; color: var(--light-gray);">Regular progress tracking.</p>
+      </div>
+
+      <div style="border-top: 1px solid var(--charcoal-gray); padding-top: 1.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">COACH SUPPORT</h2>
+        <p style="font-size: 1.05rem; color: var(--light-gray);">Guidance and adjustments.</p>
+      </div>
+    </div>
+
+    <!-- Bottom Note & Apply Button -->
+    <div style="border-top: 1px solid var(--charcoal-gray); padding-top: 3rem; text-align: center;">
+      <p style="font-size: 1.1rem; color: var(--medium-gray); margin-bottom: 2rem;">
+        Every application is reviewed individually.
+      </p>
+      <a href="{% url 'applications:apply' %}" class="btn btn-primary btn-lg">
+        APPLY NOW
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

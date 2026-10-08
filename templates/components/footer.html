@@ -1,0 +1,28 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand-wrap">
+      <img src="{{ dadbods_images.logo }}" class="footer-logo" alt="DadBods">
+      <div class="footer-brand-info">
+        <span class="footer-brand-name">DADBODS</span>
+        <span class="footer-slogan">RIGHT TIME. RIGHT NOW.</span>
+      </div>
+    </div>
+
+    <ul class="footer-links">
+      <li><a href="{% url 'core:home' %}">HOME</a></li>
+      <li><a href="{% url 'core:transformations' %}">TRANSFORMATIONS</a></li>
+      <li><a href="{% url 'core:about' %}">ABOUT</a></li>
+      <li><a href="{% url 'applications:apply' %}">GET TRAINED BY DADBODS</a></li>
+      <li>
+        <a href="https://www.instagram.com/_.dadbods._/" target="_blank" rel="noopener noreferrer"
+          class="footer-social-link">
+          INSTAGRAM &rarr;
+        </a>
+      </li>
+    </ul>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; {% now "Y" %} DADBODS. ALL RIGHTS RESERVED.</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,502 @@
+{% extends "base.html" %}
+
+{% block title %}GET TRAINED BY DADBODS | Application{% endblock %}
+
+{% block content %}
+<!-- ========================================================================
+     1. GET TRAINED HERO & VERTICAL PROGRESSION (01, 02, 03, 04)
+     ======================================================================== -->
+<section class="get-trained-hero-section">
+  <div class="container" style="max-width: 960px;">
+    <div class="apply-logo-top reveal-on-scroll">
+      <img src="{{ dadbods_images.logo }}" alt="DadBods">
+    </div>
+
+    <div class="section-label reveal-on-scroll" style="text-align: center;">THE COACHING PLATFORM</div>
+    <h1 class="page-hero-title reveal-on-scroll" style="text-align: center;" data-delay="100">
+      GET TRAINED<br>BY DADBODS.
+    </h1>
+    <p class="page-hero-sub reveal-on-scroll" style="text-align: center; margin-bottom: 4.5rem;" data-delay="200">
+      Personalised coaching built around your goal, lifestyle and progress.
+    </p>
+
+    <!-- Vertical Progression System -->
+    <div class="vertical-progression-stack">
+      <!-- 01 TRAINING -->
+      <div class="vertical-progression-row reveal-on-scroll" data-delay="100">
+        <div class="progression-col-num">01</div>
+        <div class="progression-col-body">
+          <h2 class="progression-item-heading">TRAINING</h2>
+          <p class="progression-item-desc">
+            Personalised programming tailored to your specific biomechanics, available gym equipment, and weekly schedule. Objective progressive overload on every lift.
+          </p>
+        </div>
+      </div>
+
+      <!-- 02 NUTRITION -->
+      <div class="vertical-progression-row reveal-on-scroll" data-delay="200">
+        <div class="progression-col-num">02</div>
+        <div class="progression-col-body">
+          <h2 class="progression-item-heading">NUTRITION</h2>
+          <p class="progression-item-desc">
+            A practical, sustainable approach compatible with South Indian and global diets. Hit your calorie and protein targets without cutting out foods you enjoy.
+          </p>
+        </div>
+      </div>
+
+      <!-- 03 ACCOUNTABILITY -->
+      <div class="vertical-progression-row reveal-on-scroll" data-delay="300">
+        <div class="progression-col-num">03</div>
+        <div class="progression-col-body">
+          <h2 class="progression-item-heading">ACCOUNTABILITY</h2>
+          <p class="progression-item-desc">
+            Weekly check-in assessments, lifting form feedback, body metric trends, and routine troubleshooting to ensure constant momentum.
+          </p>
+        </div>
+      </div>
+
+      <!-- 04 DIRECT SUPPORT -->
+      <div class="vertical-progression-row reveal-on-scroll" data-delay="400">
+        <div class="progression-col-num">04</div>
+        <div class="progression-col-body">
+          <h2 class="progression-item-heading">DIRECT SUPPORT</h2>
+          <p class="progression-item-desc">
+            Direct access to Athish, Karan, and Shri for timely advice and plan adjustments whenever your progression signals a plateau.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ready to Start Hook -->
+    <div class="get-trained-ready-hook reveal-on-scroll" data-delay="450">
+      <span class="ready-hook-label">RIGHT TIME. RIGHT NOW.</span>
+      <h2 class="ready-hook-heading">READY TO START?</h2>
+      <p class="ready-hook-sub">
+        Every application is reviewed individually by Athish, Karan, and Shri. Complete the onboarding questionnaire below to apply for coaching.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     2. PREMIUM ONBOARDING APPLICATION FORM (SMOOTH STEP TRANSITIONS)
+     ======================================================================== -->
+<section class="apply-form-section" id="applicationFormSection">
+  <div class="container apply-container-minimal">
+
+    <!-- Connected Step Progress Tracker -->
+    <div class="apply-step-tracker-line" id="applyStepTracker">
+      <div class="step-badge active" data-step="1">
+        <span class="step-num-circle">01</span>
+        <span class="step-label-text">ABOUT YOU</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-badge" data-step="2">
+        <span class="step-num-circle">02</span>
+        <span class="step-label-text">GOAL</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-badge" data-step="3">
+        <span class="step-num-circle">03</span>
+        <span class="step-label-text">TRAINING</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-badge" data-step="4">
+        <span class="step-num-circle">04</span>
+        <span class="step-label-text">LIFESTYLE</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-badge" data-step="5">
+        <span class="step-num-circle">05</span>
+        <span class="step-label-text">COMMITMENT</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-badge" data-step="6">
+        <span class="step-num-circle">06</span>
+        <span class="step-label-text">FINAL DETAILS</span>
+      </div>
+    </div>
+
+    <!-- Step Heading Header -->
+    <div class="apply-header-minimal">
+      <div class="apply-progress-text" id="stepCounterText">01 / 06 &bull; ABOUT YOU</div>
+      <h2 class="apply-step-heading" id="stepHeadingText">LET'S GET TO KNOW YOU.</h2>
+    </div>
+
+    <!-- Application Form Container -->
+    <form method="POST" action="{% url 'applications:apply' %}" id="coachingApplicationForm" novalidate>
+      {% csrf_token %}
+
+      <!-- Anti-Spam Honeypot & Timestamp -->
+      {{ form.website }}
+      {{ form.form_load_timestamp }}
+      <input type="hidden" name="high_activity_work" value="no">
+
+      <div class="form-steps-viewport">
+        <!-- ===============================================================
+             STEP 1: 01 ABOUT YOU
+             =============================================================== -->
+        <div class="form-step-section active-step" id="formStep1">
+          <div class="field-group">
+            <label class="field-label" for="id_full_name">What is your full name?</label>
+            <input type="text" name="full_name" id="id_full_name" class="input-minimal" placeholder="Your full name" required value="{{ form.full_name.value|default:'' }}">
+            {% if form.full_name.errors %}<p class="field-error-text">{{ form.full_name.errors.0 }}</p>{% endif %}
+          </div>
+
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_age">Age</label>
+              <input type="number" name="age" id="id_age" class="input-minimal" placeholder="Age" min="16" max="80" required value="{{ form.age.value|default:'' }}">
+              {% if form.age.errors %}<p class="field-error-text">{{ form.age.errors.0 }}</p>{% endif %}
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_gender">Gender</label>
+              <select name="gender" id="id_gender" class="select-minimal" required>
+                <option value="male" {% if form.gender.value == 'male' %}selected{% endif %}>Male</option>
+                <option value="female" {% if form.gender.value == 'female' %}selected{% endif %}>Female</option>
+                <option value="other" {% if form.gender.value == 'other' %}selected{% endif %}>Other</option>
+                <option value="prefer_not_to_say" {% if form.gender.value == 'prefer_not_to_say' %}selected{% endif %}>Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_instagram_username">Instagram Username</label>
+            <input type="text" name="instagram_username" id="id_instagram_username" class="input-minimal" placeholder="@yourhandle" required value="{{ form.instagram_username.value|default:'' }}">
+            {% if form.instagram_username.errors %}<p class="field-error-text">{{ form.instagram_username.errors.0 }}</p>{% endif %}
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_whatsapp_number">WhatsApp Number</label>
+            <input type="text" name="whatsapp_number" id="id_whatsapp_number" class="input-minimal" placeholder="+91 98765 43210" required value="{{ form.whatsapp_number.value|default:'' }}">
+            {% if form.whatsapp_number.errors %}<p class="field-error-text">{{ form.whatsapp_number.errors.0 }}</p>{% endif %}
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_email">Email Address</label>
+            <input type="email" name="email" id="id_email" class="input-minimal" placeholder="email@domain.com" required value="{{ form.email.value|default:'' }}">
+            {% if form.email.errors %}<p class="field-error-text">{{ form.email.errors.0 }}</p>{% endif %}
+          </div>
+
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_occupation">Occupation</label>
+              <select name="occupation" id="id_occupation" class="select-minimal" required>
+                <option value="working_professional" {% if form.occupation.value == 'working_professional' %}selected{% endif %}>Working Professional</option>
+                <option value="business" {% if form.occupation.value == 'business' %}selected{% endif %}>Business</option>
+                <option value="student" {% if form.occupation.value == 'student' %}selected{% endif %}>Student</option>
+                <option value="other" {% if form.occupation.value == 'other' %}selected{% endif %}>Other</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_city">Current City</label>
+              <input type="text" name="city" id="id_city" class="input-minimal" placeholder="e.g. Chennai, London" required value="{{ form.city.value|default:'' }}">
+              {% if form.city.errors %}<p class="field-error-text">{{ form.city.errors.0 }}</p>{% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- ===============================================================
+             STEP 2: 02 GOAL
+             =============================================================== -->
+        <div class="form-step-section" id="formStep2">
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_height">Height</label>
+              <input type="text" name="height" id="id_height" class="input-minimal" placeholder="e.g. 175 cm or 5'9&quot;" required value="{{ form.height.value|default:'' }}">
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_weight">Current Weight</label>
+              <input type="text" name="weight" id="id_weight" class="input-minimal" placeholder="e.g. 78 kg" required value="{{ form.weight.value|default:'' }}">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_goal">Primary Fitness Goal</label>
+            <select name="goal" id="id_goal" class="select-minimal" required>
+              <option value="fat_loss" {% if form.goal.value == 'fat_loss' %}selected{% endif %}>Fat Loss</option>
+              <option value="muscle_gain" {% if form.goal.value == 'muscle_gain' %}selected{% endif %}>Muscle Gain</option>
+              <option value="body_recomposition" {% if form.goal.value == 'body_recomposition' %}selected{% endif %}>Body Recomposition</option>
+              <option value="strength" {% if form.goal.value == 'strength' %}selected{% endif %}>Strength</option>
+              <option value="physique_transformation" {% if form.goal.value == 'physique_transformation' %}selected{% endif %}>Physique Transformation</option>
+              <option value="competition_preparation" {% if form.goal.value == 'competition_preparation' %}selected{% endif %}>Competition Preparation</option>
+              <option value="general_fitness" {% if form.goal.value == 'general_fitness' %}selected{% endif %}>General Fitness</option>
+              <option value="other" {% if form.goal.value == 'other' %}selected{% endif %}>Other</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_target_description">What specific outcome would you like to achieve in the next 3–6 months?</label>
+            <textarea name="target_description" id="id_target_description" class="input-minimal" rows="4" placeholder="Detail your target weight, physique shape, or lifting milestones..." required>{{ form.target_description.value|default:'' }}</textarea>
+          </div>
+        </div>
+
+        <!-- ===============================================================
+             STEP 3: 03 TRAINING
+             =============================================================== -->
+        <div class="form-step-section" id="formStep3">
+          <div class="field-group">
+            <label class="field-label" for="id_fitness_experience">Past Fitness Experience</label>
+            <select name="fitness_experience" id="id_fitness_experience" class="select-minimal" required>
+              <option value="never_trained" {% if form.fitness_experience.value == 'never_trained' %}selected{% endif %}>Never trained before</option>
+              <option value="less_than_6_months" {% if form.fitness_experience.value == 'less_than_6_months' %}selected{% endif %}>Less than 6 months</option>
+              <option value="6_12_months" {% if form.fitness_experience.value == '6_12_months' %}selected{% endif %}>6–12 months</option>
+              <option value="1_2_years" {% if form.fitness_experience.value == '1_2_years' %}selected{% endif %}>1–2 years</option>
+              <option value="2_5_years" {% if form.fitness_experience.value == '2_5_years' %}selected{% endif %}>2–5 years</option>
+              <option value="5_plus_years" {% if form.fitness_experience.value == '5_plus_years' %}selected{% endif %}>5+ years</option>
+            </select>
+          </div>
+
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_training_days">Current training days / week</label>
+              <select name="training_days" id="id_training_days" class="select-minimal" required>
+                <option value="0" {% if form.training_days.value == '0' %}selected{% endif %}>0 days</option>
+                <option value="1-2" {% if form.training_days.value == '1-2' %}selected{% endif %}>1–2 days</option>
+                <option value="3" {% if form.training_days.value == '3' %}selected{% endif %}>3 days</option>
+                <option value="4" {% if form.training_days.value == '4' %}selected{% endif %}>4 days</option>
+                <option value="5" {% if form.training_days.value == '5' %}selected{% endif %}>5 days</option>
+                <option value="6+" {% if form.training_days.value == '6+' %}selected{% endif %}>6+ days</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_preferred_training_location">Training Location</label>
+              <select name="preferred_training_location" id="id_preferred_training_location" class="select-minimal" required>
+                <option value="Gym" {% if form.preferred_training_location.value == 'Gym' %}selected{% endif %}>Commercial Gym</option>
+                <option value="Home" {% if form.preferred_training_location.value == 'Home' %}selected{% endif %}>Home Setup</option>
+                <option value="Both" {% if form.preferred_training_location.value == 'Both' %}selected{% endif %}>Both Gym &amp; Home</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_current_training_routine">Current workout split or routine</label>
+            <textarea name="current_training_routine" id="id_current_training_routine" class="input-minimal" rows="3" placeholder="Describe your current weekly routine, or write None" required>{{ form.current_training_routine.value|default:'' }}</textarea>
+          </div>
+        </div>
+
+        <!-- ===============================================================
+             STEP 4: 04 LIFESTYLE
+             =============================================================== -->
+        <div class="form-step-section" id="formStep4">
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_activity_level">Daily activity level</label>
+              <select name="activity_level" id="id_activity_level" class="select-minimal" required>
+                <option value="mostly_sedentary" {% if form.activity_level.value == 'mostly_sedentary' %}selected{% endif %}>Mostly sedentary (Desk job)</option>
+                <option value="lightly_active" {% if form.activity_level.value == 'lightly_active' %}selected{% endif %}>Lightly active</option>
+                <option value="moderately_active" {% if form.activity_level.value == 'moderately_active' %}selected{% endif %}>Moderately active</option>
+                <option value="very_active" {% if form.activity_level.value == 'very_active' %}selected{% endif %}>Very active (On feet all day)</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_sleep_hours">Average sleep per night</label>
+              <select name="sleep_hours" id="id_sleep_hours" class="select-minimal" required>
+                <option value="under_5" {% if form.sleep_hours.value == 'under_5' %}selected{% endif %}>Less than 5 hours</option>
+                <option value="5-6" {% if form.sleep_hours.value == '5-6' %}selected{% endif %}>5–6 hours</option>
+                <option value="6-7" {% if form.sleep_hours.value == '6-7' %}selected{% endif %}>6–7 hours</option>
+                <option value="7-8" {% if form.sleep_hours.value == '7-8' %}selected{% endif %}>7–8 hours</option>
+                <option value="8_plus" {% if form.sleep_hours.value == '8_plus' %}selected{% endif %}>8+ hours</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_diet_preference">Dietary preference</label>
+            <select name="diet_preference" id="id_diet_preference" class="select-minimal" required>
+              <option value="non_vegetarian" {% if form.diet_preference.value == 'non_vegetarian' %}selected{% endif %}>Non-vegetarian</option>
+              <option value="vegetarian" {% if form.diet_preference.value == 'vegetarian' %}selected{% endif %}>Vegetarian</option>
+              <option value="eggetarian" {% if form.diet_preference.value == 'eggetarian' %}selected{% endif %}>Eggetarian</option>
+              <option value="vegan" {% if form.diet_preference.value == 'vegan' %}selected{% endif %}>Vegan</option>
+              <option value="other" {% if form.diet_preference.value == 'other' %}selected{% endif %}>Other</option>
+            </select>
+          </div>
+
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_diet_consistency">Diet consistency</label>
+              <select name="diet_consistency" id="id_diet_consistency" class="select-minimal" required>
+                <option value="very_inconsistent" {% if form.diet_consistency.value == 'very_inconsistent' %}selected{% endif %}>Very inconsistent</option>
+                <option value="somewhat_inconsistent" {% if form.diet_consistency.value == 'somewhat_inconsistent' %}selected{% endif %}>Somewhat inconsistent</option>
+                <option value="fairly_consistent" {% if form.diet_consistency.value == 'fairly_consistent' %}selected{% endif %}>Fairly consistent</option>
+                <option value="very_consistent" {% if form.diet_consistency.value == 'very_consistent' %}selected{% endif %}>Very consistent</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_nutrition_difficulty">Biggest nutrition challenge</label>
+              <select name="nutrition_difficulty" id="id_nutrition_difficulty" class="select-minimal" required>
+                <option value="protein_intake" {% if form.nutrition_difficulty.value == 'protein_intake' %}selected{% endif %}>Hitting protein intake</option>
+                <option value="calorie_control" {% if form.nutrition_difficulty.value == 'calorie_control' %}selected{% endif %}>Calorie control</option>
+                <option value="eating_outside" {% if form.nutrition_difficulty.value == 'eating_outside' %}selected{% endif %}>Eating outside often</option>
+                <option value="consistency" {% if form.nutrition_difficulty.value == 'consistency' %}selected{% endif %}>Weekend consistency</option>
+                <option value="meal_prep" {% if form.nutrition_difficulty.value == 'meal_prep' %}selected{% endif %}>Meal prep time</option>
+                <option value="cravings" {% if form.nutrition_difficulty.value == 'cravings' %}selected{% endif %}>Sweet/junk cravings</option>
+                <option value="dont_know_what_to_eat" {% if form.nutrition_difficulty.value == 'dont_know_what_to_eat' %}selected{% endif %}>Don't know what to eat</option>
+                <option value="other" {% if form.nutrition_difficulty.value == 'other' %}selected{% endif %}>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_coaching_budget">Monthly investment tier for coaching</label>
+            <select name="coaching_budget" id="id_coaching_budget" class="select-minimal" required>
+              {% for bkey, blabel in coaching_budget_choices %}
+              <option value="{{ bkey }}" {% if form.coaching_budget.value == bkey %}selected{% endif %}>{{ blabel }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <!-- ===============================================================
+             STEP 5: 05 COMMITMENT & HEALTH
+             =============================================================== -->
+        <div class="form-step-section" id="formStep5">
+          <div class="field-group">
+            <label class="check-minimal">
+              <input type="checkbox" name="previous_injury" id="id_previous_injury" {% if form.previous_injury.value %}checked{% endif %}>
+              <span>Do you have any past or ongoing injuries?</span>
+            </label>
+            <div id="box_injury_description" style="display: none; margin-top: 0.75rem;">
+              <textarea name="injury_description" id="id_injury_description" class="input-minimal" rows="2" placeholder="Describe which joints/muscles and when it occurred...">{{ form.injury_description.value|default:'' }}</textarea>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="check-minimal">
+              <input type="checkbox" name="medical_condition" id="id_medical_condition" {% if form.medical_condition.value %}checked{% endif %}>
+              <span>Any medical condition affecting training or nutrition?</span>
+            </label>
+            <div id="box_medical_condition_description" style="display: none; margin-top: 0.75rem;">
+              <textarea name="medical_condition_description" id="id_medical_condition_description" class="input-minimal" rows="2" placeholder="e.g. Asthma, High BP, Diabetes, Hernia...">{{ form.medical_condition_description.value|default:'' }}</textarea>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="check-minimal">
+              <input type="checkbox" name="medication" id="id_medication" {% if form.medication.value %}checked{% endif %}>
+              <span>Are you currently taking any prescription medications?</span>
+            </label>
+            <div id="box_medication_description" style="display: none; margin-top: 0.75rem;">
+              <textarea name="medication_description" id="id_medication_description" class="input-minimal" rows="2" placeholder="List medications...">{{ form.medication_description.value|default:'' }}</textarea>
+            </div>
+          </div>
+
+          <p class="medical-disclosure-note">
+            Health disclosures never disqualify applicants. They ensure our coaches build safe, customized routines.
+          </p>
+
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_realistic_training_commitment">Realistic days you can train</label>
+              <select name="realistic_training_commitment" id="id_realistic_training_commitment" class="select-minimal" required>
+                <option value="3" {% if form.realistic_training_commitment.value == '3' %}selected{% endif %}>3 days / week</option>
+                <option value="4" {% if form.realistic_training_commitment.value == '4' %}selected{% endif %}>4 days / week</option>
+                <option value="5" {% if form.realistic_training_commitment.value == '5' %}selected{% endif %}>5 days / week</option>
+                <option value="6+" {% if form.realistic_training_commitment.value == '6+' %}selected{% endif %}>6+ days / week</option>
+                <option value="1-2" {% if form.realistic_training_commitment.value == '1-2' %}selected{% endif %}>1–2 days / week</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_nutrition_tracking_readiness">Nutrition tracking readiness</label>
+              <select name="nutrition_tracking_readiness" id="id_nutrition_tracking_readiness" class="select-minimal" required>
+                <option value="very_willing" {% if form.nutrition_tracking_readiness.value == 'very_willing' %}selected{% endif %}>Very willing (Use an app daily)</option>
+                <option value="willing" {% if form.nutrition_tracking_readiness.value == 'willing' %}selected{% endif %}>Willing with guidance</option>
+                <option value="somewhat_hesitant" {% if form.nutrition_tracking_readiness.value == 'somewhat_hesitant' %}selected{% endif %}>Somewhat hesitant</option>
+                <option value="not_willing" {% if form.nutrition_tracking_readiness.value == 'not_willing' %}selected{% endif %}>Prefer no calorie tracking</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_follow_through_score">How likely are you to follow through when your coach asks you to make an adjustment? (1 to 10)</label>
+            <input type="number" name="follow_through_score" id="id_follow_through_score" class="input-minimal" min="1" max="10" required value="{{ form.follow_through_score.value|default:'8' }}">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_consistency_problem">What usually causes you to lose consistency?</label>
+            <textarea name="consistency_problem" id="id_consistency_problem" class="input-minimal" rows="3" placeholder="e.g. Work stress, long commute, travel, lack of accountability..." required>{{ form.consistency_problem.value|default:'' }}</textarea>
+          </div>
+        </div>
+
+        <!-- ===============================================================
+             STEP 6: 06 FINAL DETAILS
+             =============================================================== -->
+        <div class="form-step-section" id="formStep6">
+          <div class="field-group">
+            <label class="field-label" for="id_previous_attempts">What programs have you tried before, and why didn't they stick?</label>
+            <textarea name="previous_attempts" id="id_previous_attempts" class="input-minimal" rows="3" placeholder="Tell us about past coaches, YouTube splits, or crash diets..." required>{{ form.previous_attempts.value|default:'' }}</textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_biggest_obstacle">What is the single biggest obstacle stopping you right now?</label>
+            <textarea name="biggest_obstacle" id="id_biggest_obstacle" class="input-minimal" rows="3" placeholder="Identify the main blocker..." required>{{ form.biggest_obstacle.value|default:'' }}</textarea>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="id_why_dadbods">Why do you want to work with DadBods specifically?</label>
+            <textarea name="why_dadbods" id="id_why_dadbods" class="input-minimal" rows="3" placeholder="What resonated with you about Athish, Karan, or Shri?" required>{{ form.why_dadbods.value|default:'' }}</textarea>
+          </div>
+
+          <div class="field-group-row">
+            <div class="field-group">
+              <label class="field-label" for="id_start_timeline">When would you ideally like to start?</label>
+              <select name="start_timeline" id="id_start_timeline" class="select-minimal" required>
+                <option value="immediately" {% if form.start_timeline.value == 'immediately' %}selected{% endif %}>Immediately (Ready today)</option>
+                <option value="within_1_week" {% if form.start_timeline.value == 'within_1_week' %}selected{% endif %}>Within 1 week</option>
+                <option value="within_2_weeks" {% if form.start_timeline.value == 'within_2_weeks' %}selected{% endif %}>Within 2 weeks</option>
+                <option value="within_1_month" {% if form.start_timeline.value == 'within_1_month' %}selected{% endif %}>Within 1 month</option>
+                <option value="exploring" {% if form.start_timeline.value == 'exploring' %}selected{% endif %}>Just exploring</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="id_preferred_call_timing">Preferred onboarding call timing</label>
+              <select name="preferred_call_timing" id="id_preferred_call_timing" class="select-minimal" required>
+                <option value="morning" {% if form.preferred_call_timing.value == 'morning' %}selected{% endif %}>Morning (9am - 12pm)</option>
+                <option value="afternoon" {% if form.preferred_call_timing.value == 'afternoon' %}selected{% endif %}>Afternoon (12pm - 5pm)</option>
+                <option value="evening" {% if form.preferred_call_timing.value == 'evening' %}selected{% endif %}>Evening (5pm - 9pm)</option>
+                <option value="weekend" {% if form.preferred_call_timing.value == 'weekend' %}selected{% endif %}>Weekend</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group" style="margin-top: 1.5rem;">
+            <label class="check-minimal">
+              <input type="checkbox" name="agreement_accepted" id="id_agreement_accepted" required checked>
+              <span style="font-size:0.85rem; color:var(--medium-gray);">
+                I understand that submitting this application does not guarantee acceptance into DadBods coaching. Applications are reviewed based on goals, commitment, coach availability and mutual fit.
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Navigation Buttons -->
+      <div class="nav-buttons-minimal">
+        <button type="button" class="btn btn-secondary" id="btnStepPrev" style="display: none;">
+          &larr; BACK
+        </button>
+        <div style="margin-left: auto;">
+          <button type="button" class="btn btn-primary btn-glow" id="btnStepNext">
+            NEXT &rarr;
+          </button>
+          <button type="submit" class="btn btn-primary btn-lg btn-glow" id="btnStepSubmit" style="display: none;">
+            SUBMIT APPLICATION &rarr;
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/apply.js"></script>
+{% endblock %}

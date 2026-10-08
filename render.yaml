@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: dadbods-website
+    runtime: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn config.wsgi:application
+    plan: free
+    region: singapore
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.11
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: "4"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dadbods-db
+          property: connectionString
+
+databases:
+  - name: dadbods-db
+    databaseName: dadbods
+    user: dadbods_user
+    plan: free
+    region: singapore

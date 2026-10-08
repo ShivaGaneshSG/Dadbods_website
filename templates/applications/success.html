@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}APPLICATION RECEIVED | DADBODS{% endblock %}
+
+{% block content %}
+<div class="apply-page-wrap" style="display: flex; align-items: center; justify-content: center;">
+  <div class="container" style="max-width: 620px; text-align: center;">
+    <div style="width: 64px; margin: 0 auto 2rem auto;">
+      <img src="{{ dadbods_images.logo }}" alt="DadBods" style="filter: brightness(0) invert(1);">
+    </div>
+
+    <div class="section-label" style="margin-bottom: 0.75rem;">CONFIRMED</div>
+
+    <h1 style="font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.5rem;">
+      APPLICATION RECEIVED.
+    </h1>
+
+    <p style="font-size: 1.05rem; color: var(--light-gray); line-height: 1.7; margin-bottom: 3rem;">
+      Thank you, <strong>{{ applicant_name }}</strong>. Your application has been submitted successfully. The DadBods team will review your application and contact you if you're selected for the next step.
+    </p>
+
+    <div>
+      <a href="{% url 'core:home' %}" class="btn btn-primary">
+        RETURN HOME
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

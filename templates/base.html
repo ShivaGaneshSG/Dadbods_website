@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}DADBODS | RIGHT TIME. RIGHT NOW.{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}DadBods is an elite Tamil fitness coaching brand run by Athish, Karan, and Shri.{% endblock %}">
+  
+  <meta property="og:title" content="DADBODS">
+  <meta property="og:description" content="Build your physique. Personalised coaching. Real results.">
+  <meta property="og:type" content="website">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="/static/css/main.css">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Sticky Navbar -->
+  {% include "components/navbar.html" %}
+
+  <!-- Messages -->
+  {% if messages %}
+  <div class="container" style="margin-top: 5.5rem;">
+    {% for message in messages %}
+    <div style="background: var(--dark-gray); border: 1px solid var(--charcoal-gray); color: var(--off-white); padding: 0.85rem 1.25rem; font-size: 0.85rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+      <span>{{ message }}</span>
+      <button type="button" onclick="this.parentElement.remove()" style="background:none; border:none; color:var(--off-white); font-size:1.1rem; cursor:pointer;">&times;</button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Minimal Footer -->
+  {% include "components/footer.html" %}
+
+  <!-- Global Full-Screen Interactive Lightbox Modal -->
+  <div class="lightbox-modal" id="globalLightbox" role="dialog" aria-modal="true" aria-label="Transformation Lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+    <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous Image">&#10094;</button>
+    <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next Image">&#10095;</button>
+    <div class="lightbox-img-wrap">
+      <img src="" class="lightbox-content" id="lightboxImg" alt="Transformation View">
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+  </div>
+
+  <!-- Master JavaScript -->
+  <script src="/static/js/main.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

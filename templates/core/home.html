@@ -1,0 +1,366 @@
+{% extends "base.html" %}
+
+{% block title %}DADBODS | RIGHT TIME. RIGHT NOW.{% endblock %}
+
+{% block content %}
+<!-- ========================================================================
+     1. CINEMATIC HERO (MULTI-LAYERED, EDITORIAL COMPOSITION, 95VH)
+     ======================================================================== -->
+<section class="hero-cinematic" id="heroSection">
+  <!-- Layer 1: Background Photograph -->
+  <div class="hero-bg-media" style="background-image: url('{{ dadbods_images.general.hero_bg }}');" id="heroBgMedia"></div>
+  
+  <!-- Layer 2 & 3: Dark and Deep Navy/Indigo Gradients -->
+  <div class="hero-layer-gradient"></div>
+  
+  <!-- Layer 4: Vignette -->
+  <div class="hero-layer-vignette"></div>
+
+  <!-- Editorial Hero Content -->
+  <div class="container hero-content-wrap">
+    <!-- Brand Logo Lockup -->
+    <div class="hero-brand-top reveal-item reveal-delay-1">
+      <div class="hero-logo-box">
+        <img src="{{ dadbods_images.logo }}" alt="DadBods Logo">
+      </div>
+      <span class="hero-brand-label">DADBODS &bull; TAMIL FITNESS COACHING</span>
+    </div>
+
+    <!-- Editorial Typography Stack -->
+    <div class="hero-editorial-body">
+      <div class="hero-slogan-line reveal-item reveal-delay-2">
+        <span>RIGHT TIME.</span>
+        <span>RIGHT NOW.</span>
+      </div>
+
+      <h1 class="hero-main-title reveal-item reveal-delay-3">
+        BUILD YOUR PHYSIQUE.
+      </h1>
+
+      <p class="hero-tagline reveal-item reveal-delay-4">
+        Personalised fitness coaching built around your goals, lifestyle and progress.
+      </p>
+
+      <div class="hero-cta-group reveal-item reveal-delay-5">
+        <a href="{% url 'applications:apply' %}" class="btn btn-primary btn-lg btn-glow">
+          GET TRAINED BY DADBODS
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="{% url 'core:transformations' %}" class="btn btn-secondary btn-lg">
+          VIEW TRANSFORMATIONS
+        </a>
+      </div>
+    </div>
+
+    <!-- Animated Scroll Indicator -->
+    <a href="#statementSection" class="hero-scroll-indicator" aria-label="Scroll to explore DadBods">
+      <span class="scroll-text">SCROLL TO EXPLORE</span>
+      <div class="scroll-mouse-icon">
+        <span class="scroll-wheel"></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ========================================================================
+     2. BRAND STATEMENT — LARGE TYPOGRAPHIC SCROLL STORY
+     ======================================================================== -->
+<section class="section-typographic-statement" id="statementSection">
+  <div class="container statement-editorial-inner">
+    <div class="section-label reveal-on-scroll">THE MANIFESTO</div>
+    
+    <div class="statement-huge-type">
+      <div class="statement-line reveal-on-scroll" data-delay="100">YOUR GOAL.</div>
+      <div class="statement-line reveal-on-scroll" data-delay="250">YOUR WORK.</div>
+      <div class="statement-line highlight-line reveal-on-scroll" data-delay="400">YOUR TRANSFORMATION.</div>
+    </div>
+
+    <p class="statement-subtext reveal-on-scroll" data-delay="500">
+      DadBods eliminates the guesswork. Structured training, culturally adaptable nutrition, and relentless coach accountability — built for real men with real schedules.
+    </p>
+
+    <div class="statement-pillars-strip reveal-on-scroll" data-delay="600">
+      <div class="pillar-tag"><span>01</span> PROGRESSIVE OVERLOAD</div>
+      <div class="pillar-sep">/</div>
+      <div class="pillar-tag"><span>02</span> PRACTICAL NUTRITION</div>
+      <div class="pillar-sep">/</div>
+      <div class="pillar-tag"><span>03</span> DIRECT ACCOUNTABILITY</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     3. THE PEOPLE BEHIND DADBODS — ATHISH / KARAN / SHRI (NAMES ONLY)
+     ======================================================================== -->
+<section class="section-editorial-coaches" id="coachesSection">
+  <div class="container">
+    <div class="section-header-editorial">
+      <div class="section-label reveal-on-scroll">DADBODS</div>
+      <div class="section-title-row">
+        <h2 class="section-heading-large reveal-on-scroll">ATHISH &bull; KARAN &bull; SHRI</h2>
+        <a href="{% url 'core:about' %}" class="link-editorial reveal-on-scroll">
+          ABOUT <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Asymmetric Editorial Grid (Names Only As Visual Design) -->
+    <div class="editorial-coaches-grid">
+      <!-- Athish -->
+      <div class="editorial-coach-col coach-col-left reveal-on-scroll" data-delay="150">
+        <div class="editorial-coach-card" data-coach="athish">
+          <div class="coach-image-wrapper">
+            <img 
+              src="{{ dadbods_images.coaches.athish.profile_image }}" 
+              alt="Athish" 
+              loading="lazy"
+              onerror="this.src='{{ dadbods_images.placeholders.avatar }}'"
+            >
+            <div class="coach-card-gradient"></div>
+          </div>
+          <div class="coach-card-info">
+            <h3 class="coach-card-name">ATHISH</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Karan -->
+      <div class="editorial-coach-col coach-col-center reveal-on-scroll" data-delay="300">
+        <div class="editorial-coach-card featured-coach-card" data-coach="karan">
+          <div class="coach-image-wrapper">
+            <img 
+              src="{{ dadbods_images.coaches.karan.profile_image }}" 
+              alt="Karan" 
+              loading="lazy"
+              onerror="this.src='{{ dadbods_images.placeholders.avatar }}'"
+            >
+            <div class="coach-card-gradient"></div>
+          </div>
+          <div class="coach-card-info">
+            <h3 class="coach-card-name">KARAN</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shri -->
+      <div class="editorial-coach-col coach-col-right reveal-on-scroll" data-delay="450">
+        <div class="editorial-coach-card" data-coach="shri">
+          <div class="coach-image-wrapper">
+            <img 
+              src="{{ dadbods_images.coaches.shri.profile_image }}" 
+              alt="Shri" 
+              loading="lazy"
+              onerror="this.src='{{ dadbods_images.placeholders.avatar }}'"
+            >
+            <div class="coach-card-gradient"></div>
+          </div>
+          <div class="coach-card-info">
+            <h3 class="coach-card-name">SHRI</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     4. TRANSFORMATIONS — EDITORIAL MASONRY SHOWCASE
+     ======================================================================== -->
+<section class="section-editorial-transformations" id="transformationsSection">
+  <div class="container">
+    <div class="section-header-editorial">
+      <div class="section-label reveal-on-scroll">PROOF & PROGRESS</div>
+      <div class="section-title-row">
+        <h2 class="section-heading-large reveal-on-scroll">THE WORK SPEAKS FOR ITSELF.</h2>
+        <a href="{% url 'core:transformations' %}" class="link-editorial reveal-on-scroll">
+          VIEW ALL TRANSFORMATIONS <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Editorial Asymmetric Grid -->
+    <div class="masonry-preview-grid">
+      {% for item in dadbods_images.transformations|slice:":4" %}
+      <div 
+        class="masonry-item item-variant-{{ forloop.counter }} js-lightbox-trigger reveal-on-scroll" 
+        data-delay="{{ forloop.counter|add:1 }}00"
+        data-img="{{ item.image_url }}"
+        data-index="{{ forloop.counter0 }}"
+      >
+        <div class="masonry-img-frame">
+          <img 
+            src="{{ item.image_url }}" 
+            alt="DadBods Client Result" 
+            loading="lazy"
+            onerror="this.src='{{ dadbods_images.placeholders.default }}'"
+          >
+          <div class="masonry-overlay">
+            <span class="overlay-badge">RESULT #0{{ forloop.counter }}</span>
+            <span class="overlay-zoom-cta">CLICK TO EXPAND &rarr;</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     5. DADBODS YOUTUBE CONTENT
+     ======================================================================== -->
+<section class="section-editorial-youtube" id="youtubeSection">
+  <div class="container">
+    <div class="section-header-editorial">
+      <div class="section-label reveal-on-scroll">YOUTUBE</div>
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-heading-large reveal-on-scroll">DADBODS ON YOUTUBE</h2>
+          <p class="section-subheading-minimal reveal-on-scroll">WATCH. LEARN. GET BETTER.</p>
+        </div>
+        <a href="{{ youtube_channel_url }}" target="_blank" rel="noopener noreferrer" class="link-editorial reveal-on-scroll">
+          VISIT CHANNEL <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Actual YouTube Videos Grid / Swipe Track -->
+    <div class="youtube-videos-grid">
+      {% for video in youtube_videos %}
+      <a 
+        href="{{ video.url }}" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="youtube-video-card reveal-on-scroll" 
+        data-delay="{{ forloop.counter|add:1 }}00"
+        aria-label="Watch {{ video.title }} on YouTube"
+      >
+        <div class="youtube-thumb-wrapper">
+          <img 
+            src="{{ video.thumbnail }}" 
+            alt="{{ video.title }}" 
+            loading="lazy"
+            class="youtube-thumb-img"
+          >
+          <div class="youtube-thumb-overlay"></div>
+          <div class="youtube-play-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <span class="youtube-tag-pill">YOUTUBE</span>
+        </div>
+        <div class="youtube-card-body">
+          <h3 class="youtube-video-title">{{ video.title }}</h3>
+          <span class="youtube-watch-cta">
+            WATCH ON YOUTUBE &rarr;
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     6. GET TRAINED — PROGRESSION SYSTEM (01, 02, 03, 04)
+     ======================================================================== -->
+<section class="section-progression-pillars" id="coachingSection">
+  <div class="container">
+    <div class="section-header-editorial" style="margin-bottom: 4rem;">
+      <div class="section-label reveal-on-scroll">THE SYSTEM</div>
+      <h2 class="section-heading-large reveal-on-scroll">GET TRAINED BY DADBODS.</h2>
+      <p class="pillars-sub-intro reveal-on-scroll">Four integrated pillars engineered for sustainable, lifelong physical shifts.</p>
+    </div>
+
+    <div class="progression-pillars-grid">
+      <!-- 01 -->
+      <div class="progression-card reveal-on-scroll" data-delay="100">
+        <div class="progression-num-watermark">01</div>
+        <div class="progression-header">
+          <span class="progression-num">01</span>
+          <h3 class="progression-title">TRAINING</h3>
+        </div>
+        <p class="progression-desc">
+          Individually tailored training programs built around your anatomical levers, available gym equipment, and weekly schedule. Every rep has objective progression metrics.
+        </p>
+      </div>
+
+      <!-- 02 -->
+      <div class="progression-card reveal-on-scroll" data-delay="200">
+        <div class="progression-num-watermark">02</div>
+        <div class="progression-header">
+          <span class="progression-num">02</span>
+          <h3 class="progression-title">NUTRITION</h3>
+        </div>
+        <p class="progression-desc">
+          Practical macro-guided nutrition protocols designed for South Indian and modern lifestyles. Hit your protein and calorie targets without giving up family dinners or social meals.
+        </p>
+      </div>
+
+      <!-- 03 -->
+      <div class="progression-card reveal-on-scroll" data-delay="300">
+        <div class="progression-num-watermark">03</div>
+        <div class="progression-header">
+          <span class="progression-num">03</span>
+          <h3 class="progression-title">ACCOUNTABILITY</h3>
+        </div>
+        <p class="progression-desc">
+          Weekly check-ins, weight trend tracking, lifting video form analysis, and ongoing data review to keep you executing consistently when motivation fades.
+        </p>
+      </div>
+
+      <!-- 04 -->
+      <div class="progression-card reveal-on-scroll" data-delay="400">
+        <div class="progression-num-watermark">04</div>
+        <div class="progression-header">
+          <span class="progression-num">04</span>
+          <h3 class="progression-title">DIRECT SUPPORT</h3>
+        </div>
+        <p class="progression-desc">
+          Direct communication and continuous adjustments to calories and volume whenever your body signals adaptation or stalling.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillars-action-bar reveal-on-scroll" data-delay="500">
+      <div class="action-bar-text">
+        <strong>APPLICATIONS ARE REVIEWED INDIVIDUALLY.</strong>
+        <span>Limited rosters to maintain elite standards.</span>
+      </div>
+      <a href="{% url 'applications:apply' %}" class="btn btn-primary btn-lg btn-glow">
+        APPLY FOR COACHING &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     6. FINAL CTA — CINEMATIC SLOGAN LOCKUP
+     ======================================================================== -->
+<section class="section-cinematic-cta">
+  <div class="cta-atmosphere-glow"></div>
+  <div class="container cta-content-box">
+    <div class="cta-logo-wrap reveal-on-scroll">
+      <img src="{{ dadbods_images.logo }}" alt="DadBods">
+    </div>
+
+    <div class="section-label reveal-on-scroll" style="margin-bottom: 0.75rem;">THE NEXT STEP</div>
+
+    <h2 class="cta-huge-slogan reveal-on-scroll" data-delay="150">
+      RIGHT TIME.<br>
+      RIGHT NOW.
+    </h2>
+
+    <p class="cta-substatement reveal-on-scroll" data-delay="300">
+      Your transformation starts with a single decision. Take the first step and let our team build your roadmap.
+    </p>
+
+    <div class="cta-buttons-wrap reveal-on-scroll" data-delay="450">
+      <a href="{% url 'applications:apply' %}" class="btn btn-primary btn-lg btn-glow">
+        GET TRAINED BY DADBODS
+        <span class="btn-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
